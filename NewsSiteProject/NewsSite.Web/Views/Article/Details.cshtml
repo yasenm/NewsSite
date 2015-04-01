@@ -1,0 +1,86 @@
+﻿@using NewsSite.Web.ViewModels.Articles;
+
+@model ArticleDetailsViewModel
+<div class="two-columns">
+    <div class="main-column">
+        <div>
+            <h3 class="t-serif">
+                <strong>@Model.Title</strong>
+            </h3>
+            <div>
+                @String.Format("{0: dd/MM/yyyy}", Model.CreatedOn)
+
+                <div class="l-float-right">
+                    <span class="my-comment-icon"></span>
+                    <span>@Model.CommentsCount</span>
+
+                    <span class="my-eye-icon"></span>
+                    <span>@Model.ReadersCount</span>
+                </div>
+            </div>
+
+            <img src="@Url.Action("Photo", "Photo", new { photoId = Model.PhotoId })" alt="No avatar was found" class="img-responsive t-image-border" />
+
+            <p>@Html.Raw(Model.Content)</p>
+
+            @Html.HiddenFor(m => m.Id, new { @id = "article-details-id" })
+
+            <div class="fb-share-button" data-href="@Request.Url" data-layout="button_count"></div>
+            <div>
+                <span>
+                    Видяна 
+                    <strong>@Model.ReadersCount</strong>
+                    пъти
+                </span>
+            </div>
+
+            @Html.Action("ArticleAlbumGalery", "Photo", new { Area = string.Empty, articleId = Model.Id })
+
+            <div>
+                @*<p class="pull-right">@Model.AuthorName</p>*@
+            </div>
+        </div>
+
+        @Html.Action("Create", "Comment", new { articleId = Model.Id })
+
+        <div id="article-comments">
+            @Html.Action("CommentsForArticle", "Comment", new { articleId = Model.Id })
+        </div>
+    </div>
+
+    <div class="side-column side-category">
+        <div>
+            @Html.Action("SquareAd", "Advertisment", new { Area = string.Empty })
+        </div>
+        <div>
+            <h6 class="featured-lists-header">
+                <strong>Подобни новини</strong>
+            </h6>
+
+            @Html.Action("ListOfTheSameCategory", new { categoryId = Model.CategoryId, newsCount = 5 })
+        </div>
+    </div>
+
+    <div id="modal" style=" overflow:hidden;" class="modal hide fade container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header text-center">
+            <h4 id="myModalLabel">@Model.Title</h4>
+        </div>
+        <div class="modal-body text-center">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 image-container-modal">
+                    <img id="modal_img_target" class="image-in-container" />
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        APP.Articles.init();
+        APP.Articles.initFbShare('@Model.Title', '@Url.Action("Photo", "Photo", new { photoId = Model.PhotoId })', '@Request.Url');
+    })
+</script>

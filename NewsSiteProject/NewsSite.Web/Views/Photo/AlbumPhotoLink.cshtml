@@ -1,0 +1,12 @@
+﻿@model long
+
+<div class="col-md-3 text-center album-thumbnail-container">
+    <a data-toggle="modal" data-target="#img-thumbnail@picture.ImageUrl"
+       class="img_modal"
+       href="">
+
+        <img class="img-thumbnail image-in-container"
+             src="@Url.Action("Photo", "Photo", new { Area = string.Empty, photoId = (long)Model })"
+             alt="No picture found here..." />
+    </a>
+</div>

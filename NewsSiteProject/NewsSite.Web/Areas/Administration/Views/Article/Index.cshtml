@@ -1,0 +1,50 @@
+﻿@using GridMvc.Html
+@using NewsSite.Web.Areas.Administration.ViewModels.Articles
+@using NewsSite.Constants
+
+@model IEnumerable<ArticleViewModel>
+
+@{
+    ViewBag.Title = "Статии";
+}
+
+<h2>Администрация на @ViewBag.Title</h2>
+
+<div>
+    @(Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(c => c.Title)
+            .Titled("Заглавие")
+            .Filterable(true);
+
+        columns.Add(c => c.CreatedOn)
+            .Titled("Дата на публикуване")
+            .Filterable(true);
+
+        columns.Add(c => c.Category)
+            .Titled("Категория")
+            .Filterable(true);
+
+        columns.Add(c => c.IsImportant)
+            .Titled("Важна новина")
+            .Filterable(true)
+            .RenderValueAs(im => im.IsImportant == true ? "Да" : "Не");
+
+        columns.Add(c => c.IsHighlighted)
+            .Titled("Акцентирана")
+            .Filterable(true)
+            .RenderValueAs(ih => ih.IsHighlighted == true ? "Да" : "Не");
+        
+        columns.Add().Titled("Действия")
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(o => Html.ActionLink("Редакция", "Edit", new { id = o.Id }).ToHtmlString());
+
+        columns.Add().Titled("Изтрий")
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(o => Html.ActionLink("Изтрий", "Delete", new { id = o.Id }).ToHtmlString());
+    })
+    .WithPaging(GlobalConstants.AdminPageSize)
+    .Sortable(true))
+</div>

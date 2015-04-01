@@ -1,0 +1,24 @@
+﻿<div class="text-center row wheater-partial text-center">
+    <div class="col-md-12 text-center">
+        <select id="weather-select-town">
+            <option value="Vratsa">Враца</option>
+            <option value="Montana">Монтана</option>
+            <option value="Vidin">Видин</option>
+            <option value="Sofia">София</option>
+        </select>
+        <span id="hidden-weather" class="hidden"></span>
+        <span class="weather-container">
+            <span id="city-name-container">Град: <strong></strong></span>
+            <span id="degrees-container">Градуси: <strong></strong></span>
+            <span id="weather-img-container"></span>
+            <span id="clouds-container">Облачност: <strong></strong></span>
+            @*<h4 id="humidity-container">Влажност на въздуха: <strong></strong></h4>
+                <h4 id="wind-container">Вятър: <strong></strong></h4>
+                <h4 id="pressure-container">Налягане: <strong></strong></h4>*@
+        </span>
+    </div>
+</div>
+
+<script>
+    APP.Weather.init();
+</script>

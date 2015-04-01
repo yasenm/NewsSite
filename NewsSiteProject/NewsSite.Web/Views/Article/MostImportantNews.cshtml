@@ -1,0 +1,53 @@
+﻿@using PagedList.Mvc
+@using NewsSite.Web.ViewModels.Articles
+
+@model PagedList.IPagedList<ArticleBigListViewModel>
+
+<div class="two-columns">
+    <div class="main-column">
+        @foreach (var article in Model)
+        {
+            <div class="my-thumbnail l-clearfix">
+                <a href="@Url.Action("Details", "Article", new { id = article.Id })">
+                    <div class="my-thumbnail-image-container">
+                        <img src="@Url.Action("Photo", "Photo", new { photoId = article.PhotoId })" alt="No avatar was found"/>
+                    </div>
+                    <div class="my-thumbnail-text">
+                        <strong>@article.Title </strong>
+                        <p>@Html.Raw(article.Content)</p>
+                        <p>
+                            <span class="my-comment-icon"></span>
+                            <span>@article.CommentsCount</span>
+                            <span class="my-eye-icon"></span>
+                            <span>@article.ReadersCount</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        }
+
+        @(Html.PagedListPager(Model, page => Url.Action("MostImportantNews", "Article", new { categoryId = (long)this.ViewBag.CategoryId, page })))
+
+    </div>
+
+    <div class="side-column side-category">
+        @Html.Action("SquareAd", "Advertisment", new { Area = string.Empty })
+
+        <div class="featured-list">
+            <a href="@Url.Action("NewsOfTheDay", "Article")">
+                <h5 class="featured-lists-header">
+                    <strong>Новините от деня</strong>
+                </h5>
+            </a>
+            @Html.Action("LatestNews", "Article", new { newsCount = 5 })
+        </div>
+        <div class="featured-list">
+            <a href="@Url.Action("MostCommentedNews", "Article")">
+                <h5 class="featured-lists-header">
+                    <strong>Най-коментираните новини</strong>
+                </h5>
+            </a>
+            @Html.Action("MostCommented", "Article", new { newsCount = 5 })
+        </div>
+    </div>
+</div>

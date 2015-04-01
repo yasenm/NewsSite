@@ -1,0 +1,275 @@
+﻿/* Common Classes
+------------------------------- */
+.left-border {
+    border-left: 1px solid #ccc;
+}
+
+.t-serif {
+    font-family: serif;
+    color: #444;
+    border-bottom: 1px solid #444;
+    margin: 1em 0;
+    font-weight: bold;
+}
+
+.t-image-border {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+/* Top-Menu
+------------------------------- */
+.top-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1.6em;
+}
+
+.top-menu > li {
+    display: inline-block;
+    padding-right: 1%;
+}
+
+.top-menu > li > a {
+    font-family: serif;
+    color: rgb(217, 217, 217);
+    transition: all ease-in .2s;
+}
+
+.top-menu > li:hover > a {
+    text-decoration: none;
+    color: red;
+}
+
+/* Sub-Menu */
+.top-menu .sub-menu {
+    padding: 0;
+    display: none;
+    list-style: none;
+    position: absolute;
+    text-align: left;
+
+    background-color: white;
+    border: 1px solid #555;
+    z-index: 100;
+}
+
+.top-menu .open .sub-menu {
+    display: block;
+}
+
+.top-menu > li:hover .sub-menu {
+    display: block;
+}
+
+.top-menu .sub-menu li:hover {
+    background-color: #ddd;
+}
+
+.top-menu .sub-menu a {
+    margin-left: 3%;
+    font-family: serif;
+    color: #666;
+}
+
+.top-menu .sub-menu a:hover {
+    text-decoration: none;
+}
+
+
+/* Thumbnail-Item
+------------------------------- */
+.my-thumbnail {
+    width: 100%;
+    padding: 0.75em 2%;
+}
+
+.my-thumbnail:hover {
+    background-color: #eee;
+}
+
+.my-thumbnail-image-container {
+    width: 30%;
+    float: left;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+}
+
+.my-thumbnail-image-container img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.my-thumbnail-text {
+    width: 65%;
+    float: right;
+    text-align: left;
+    color: #333;
+}
+
+.my-thumbnail-sub-text {
+    font-size: 0.8em;
+    color: #555;
+    font-style: italic;
+}
+
+.my-thumbnail:hover a {
+    text-decoration: none;
+}
+
+.my-thumbnail-text p:last-child {
+    margin: 0;
+}
+
+/* Small-List
+------------------------------- */
+.small-list {
+    width: 100%;
+}
+
+.small-list-title {
+    font-family: serif;
+    font-size: 1.5em;
+    color: #333;
+    border-bottom: 1px solid #333;
+}
+
+.small-list-item {
+    padding: 0 1%;
+    width: 19%;
+    float: left;
+    border-right: 1px solid #ccc;
+}
+
+.small-list-item:hover {
+    background-color: #eee;
+}
+
+.small-list-item:last-child {
+    border: none;
+}
+
+.small-list-item a {
+    color: #444;
+}
+
+/* Article
+------------------------------- */
+.article {
+    padding: 5%;
+    color: #333;
+}
+
+.article-header {
+    font-family: serif;
+    color: #222;
+    border-bottom: 1px solid #555;
+}
+
+/* Icons
+------------------------------- */
+.my-comment-icon {
+    display: inline-block;
+    width: 20px;
+    height: 13px;
+    background-image: url("/Content/img/comment-icon.png");
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.my-eye-icon {
+     display: inline-block;
+    width: 20px;
+    height: 13px;
+    background-image: url("/Content/img/eye-icon.png");
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+/* MQs
+------------------------------- */
+@media screen and (max-width: 900px) {
+
+    .my-thumbnail-responsive .my-thumbnail-image-container {
+        width: 70%;
+        float: none;
+        margin: 0 auto;
+    }
+
+    .my-thumbnail-text{
+        width: 70%;
+        float: none;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .top-menu {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .top-menu > li {
+        float: left;
+        display: block;
+        width: 25%;
+        padding: 0.5em 2%;
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+        border: 1px solid #333;
+        font-size: 0.8em;
+    }
+
+    .top-menu .sub-menu .sub-menu-item {
+        padding: 0.8em 1em;
+        text-align: center;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .my-thumbnail-responsive .my-thumbnail-image-container {
+        width: 30%;
+        float: left;
+    }
+
+    .my-thumbnail-text{
+        width: 65%;
+        float: right;
+    }
+    
+    .small-list-item {
+        width: 100%;
+        padding: 1em 3%;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .top-menu > li {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .top-menu > li {
+        width: 50%;
+        padding: 0.3em 2%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .top-menu > li {
+        width: 100%;
+        padding: 0.1em 2%;
+    }
+}
+
+

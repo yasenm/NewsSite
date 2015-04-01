@@ -1,0 +1,10 @@
+﻿@using NewsSite.Web.ViewModels.Advertisments
+
+@model AdvertismentViewModel
+
+<div class="horizontal-ad">
+    <a href="@Model.Link" target="_blank" name="@Model.Firm">
+        <img src="@Url.Action("AdPhoto", "Photo", new { photoId = Model.PhotoId, Area = string.Empty })"
+             alt="No image found"/>
+    </a>
+</div>

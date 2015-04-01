@@ -1,0 +1,38 @@
+﻿@using GridMvc.Html
+@using NewsSite.Web.Areas.Administration.InputModels.Advertisments
+@using NewsSite.Constants
+
+@model IEnumerable<AdvertismentAdminViewModel>
+
+@{
+    ViewBag.Title = "Реклами";
+}
+
+<h2>Администрация на @ViewBag.Title</h2>
+
+<div>
+    @(Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(c => c.Link)
+            .Titled("Линк");
+
+        columns.Add(c => c.Firm)
+            .Titled("Фирма");
+
+        columns.Add(c => c.IsActive)
+            .Titled("Активна");
+
+        columns.Add(c => c.TypeOfAd)
+            .Titled("Тип на реклама")
+            .Sanitized(false)
+            .Encoded(false)
+            .RenderValueAs(c => @<span>@GlobalConstants.AdvertismentTypes[(int)c.TypeOfAd]</span>);
+
+        columns.Add().Titled("Действия")
+           .Sanitized(false)
+           .Encoded(false)
+           .RenderValueAs(c => Html.ActionLink("Редакция", "Edit", new { id = c.Id }).ToHtmlString());
+    })
+    .WithPaging(GlobalConstants.AdminPageSize)
+    .Sortable(true))
+</div>

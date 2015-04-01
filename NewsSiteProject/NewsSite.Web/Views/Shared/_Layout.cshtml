@@ -1,0 +1,70 @@
+﻿@using NewsSite.Constants;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информатор</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/custom-css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/custom")
+</head>
+<body onload="showCurrentTime()">
+
+    @Html.Partial("_FacebookSDK")
+    @Html.Partial("_Header")
+
+    <div class="l-nav">
+        @Html.Action("CategoryNavigationPartial", "Home", new { Area = string.Empty })
+        @if (this.User.IsInRole(GlobalConstants.AdminRole) || this.User.IsInRole(GlobalConstants.ReporterRole))
+        {
+            @Html.Partial("_LoginPartial")
+        }
+    </div>
+
+    <main class="l-container l-clearfix">
+
+        @Html.Action("HorizontalAd", "Advertisment", new { Area = string.Empty })
+
+        @RenderBody()
+
+        @Html.Action("HorizontalAd", "Advertisment", new { Area = string.Empty })
+
+    </main>
+
+    @Html.Partial("_Footer")
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $("#spinner").bind("ajaxSend", function () {
+                $(this).show();
+            }).bind("ajaxStop", function () {
+                $(this).hide();
+            }).bind("ajaxError", function () {
+                $(this).hide();
+            });
+        });
+
+        function showCurrentTime() {
+            var dt = new Date();
+            var formattedDate = moment(dt).locale('bg').format('Do %MMMM YYYY, HH:mm:ss');
+            formattedDate =
+                formattedDate.substr(0, formattedDate.indexOf("%")) +
+                formattedDate[formattedDate.indexOf("%") + 1].toUpperCase() +
+                formattedDate.substr(formattedDate.indexOf("%") + 2, formattedDate.length - 1);
+
+            $("div#dateTime").html(formattedDate);
+            window.setTimeout("showCurrentTime()", 1000);
+        }
+    </script>
+</body>
+</html>

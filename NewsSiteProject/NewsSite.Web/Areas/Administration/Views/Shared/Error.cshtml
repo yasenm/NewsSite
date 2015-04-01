@@ -1,0 +1,12 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    var location = Request.Url.AbsoluteUri.ToString();
+    var exeptionMessage = Model.Exception.Message;
+    var stack = Model.Exception.StackTrace.ToString().Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries).First();
+}
+
+<h1 class="text-danger">@location</h1>
+<h2 class="text-danger">@exeptionMessage</h2>
+<h3 class="text-danger">@stack</h3>
+

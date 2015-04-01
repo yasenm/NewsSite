@@ -1,0 +1,47 @@
+﻿@using NewsSite.Web.ViewModels.Comments;
+@using Recaptcha.Web.Mvc;
+
+@model CreateCommentModel
+
+<div class="row">
+    @using (Ajax.BeginForm("Create", "Comment",
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "article-comments"
+    }))
+    {
+        @Html.AntiForgeryToken();
+
+        @Html.HiddenFor(m => m.ArticleId)
+        <div class="row">
+            <div class="col-md-3 text-right">
+                @Html.LabelFor(m => m.Content)
+            </div>
+            <div class="col-md-8">
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control create-comment-content-area" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3 text-right">
+                @Html.LabelFor(m => m.AuthorName)
+            </div>
+            <div class="col-md-8">
+                @Html.TextBoxFor(m => m.AuthorName, new { @class = "form-control  create-comment-authorname-area" })
+            </div>
+        </div>
+        <br />
+        @Html.Recaptcha(publicKey: GlobalConstants.RecaptchaPublicKey, theme: Recaptcha.Web.RecaptchaTheme.Clean)
+        <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+                <input type="submit" class="btn btn-default pull-right create-comment-btn" value="Добави коментар" />
+            </div>
+            <br />
+            <br />
+            <br />
+        </div>
+
+    }
+</div>

@@ -1,0 +1,15 @@
+﻿@using NewsSite.Web.ViewModels.Photos
+
+@model ICollection<PhotoViewModel>
+
+<div>
+    <h4 class="t-serif">
+        <strong>Снимки : </strong>
+    </h4>
+</div>
+<div class="row">
+    @foreach (var picture in Model)
+    {
+        @Html.Action("AlbumPhotoLink", "Photo", new { Area = string.Empty, photoId = picture.Id })
+    }
+</div>

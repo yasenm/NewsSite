@@ -1,0 +1,12 @@
+﻿@using NewsSite.Constants
+
+@model List<string>
+
+<select name="Type" id="Type" class="form-control">
+    @for (var i = 0; i < this.Model.Count; i++)
+    {
+        <option value="@i">
+            @GlobalConstants.AdvertismentTypes[i]
+        </option>
+    }
+</select>

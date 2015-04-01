@@ -1,0 +1,29 @@
+﻿@using NewsSite.Web.Areas.ViewModels
+@using NewsSite.Constants
+
+@model ICollection<CategoryViewModel>
+
+<ul class="top-menu">
+    <li>@Html.ActionLink("Начало", "Index", "Home")</li>
+    @foreach (var category in this.Model)
+    {
+        <li>@Html.ActionLink(category.Name, "ArticlesByCategoryPage", "Article", new { Area = string.Empty, categoryId = category.Id }, null)</li>
+    }
+
+    @if (this.User.IsInRole(GlobalConstants.AdminRole) || User.IsInRole(GlobalConstants.ReporterRole))
+    {
+        <li>
+            <a href="#" data-toggle="dropdown" aria-expanded="false">Администрация</a>
+            <ul class="sub-menu">
+                <li class="sub-menu-item">@Html.ActionLink("Добави новина", "Create", "Article", new { Area = "Administration" }, null)</li>
+                <li class="sub-menu-item">@Html.ActionLink("Разгледай новините", "Index", "Article", new { Area = "Administration" }, null)</li>
+                <li class="divider"></li>
+                <li class="sub-menu-item">@Html.ActionLink("Добави категория", "Create", "Category", new { Area = "Administration" }, null)</li>
+                <li class="sub-menu-item">@Html.ActionLink("Разгледай категорийте", "Index", "Category", new { Area = "Administration" }, null)</li>
+                <li class="divider"></li>
+                <li class="sub-menu-item">@Html.ActionLink("Добави реклама", "Create", "Advertisment", new { Area = "Administration" }, null)</li>
+                <li class="sub-menu-item">@Html.ActionLink("Разгледай рекламите", "Index", "Advertisment", new { Area = "Administration" }, null)</li>
+            </ul>
+        </li>
+    }
+</ul>

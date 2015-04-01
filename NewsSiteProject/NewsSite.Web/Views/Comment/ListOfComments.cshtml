@@ -1,0 +1,34 @@
+﻿@using NewsSite.Web.ViewModels.Comments;
+
+@model ICollection<CommentViewModel>
+
+@if (Model.Count > 0)
+{
+    <div>
+        <div>
+            <div>
+                <h3 class="t-serif">Коментари</h3>
+            </div>
+            <div class="panel-body">
+                @foreach (var comment in Model)
+                {
+                    <p>
+                        @if (this.User.IsInRole(GlobalConstants.AdminRole) || this.User.IsInRole(GlobalConstants.ReporterRole))
+                        {
+                            <button id="@comment.Id" class="btn btn-sm btn-danger delete-comment-btn">Изтрий коментара</button>
+                        }
+                        @String.Format("{0:dd/MM/yyyy HH:mm:ss}", comment.CreatedOn) |<span style="font-weight: bold;">@comment.AuthorName</span>
+                    </p>
+                    <p>@comment.Content</p>
+                    <hr style="width: 85%;" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        APP.Comments.init();
+    })
+</script>

@@ -1,0 +1,53 @@
+﻿@using NewsSite.Web.Areas.ViewModels
+
+@model ICollection<CategoryViewModel>
+
+<div>
+    <div>
+        @Html.Action("LargeCarousel", "Article", new { newsCount = 5 })
+        @Html.Action("SquareAd", "Advertisment", new { Area = string.Empty })
+    </div>
+   
+    @*<div>
+        @Html.Partial("_WeatherPartial")
+    </div>*@
+</div>
+
+<div class="featured-lists l-clearfix my-thumbnail-responsive">
+    <div class="featured-list">
+        <a href="@Url.Action("NewsOfTheDay", "Article")">
+            <h5 class="featured-lists-header">
+                <strong>Новините от деня</strong>
+            </h5>
+        </a>
+        @Html.Action("LatestNews", "Article", new { newsCount = 5 })
+    </div>
+    <div class="featured-list">
+        <a href="@Url.Action("MostImportantNews", "Article")">
+            <h5 class="featured-lists-header">
+                <strong>Най-важните</strong>
+            </h5>
+        </a>
+        @Html.Action("MostImportant", "Article", new { newsCount = 5 })
+    </div>
+    <div class="featured-list">
+        <a href="@Url.Action("MostCommentedNews", "Article")">
+            <h5 class="featured-lists-header">
+                <strong>Най-коментираните</strong>
+            </h5>
+        </a>
+        @Html.Action("MostCommented", "Article", new { newsCount = 5 })
+    </div>
+</div>
+
+<div>
+    @foreach (var category in this.Model)
+    {
+        <div class="small-list l-clearfix">
+            <h6 class="small-list-title">
+                <strong>@category.Name</strong>
+            </h6>
+            @Html.Action("RenderSmallList", "Article", new { categoryId = category.Id, newsCount = 5 })
+        </div>
+    }
+</div>

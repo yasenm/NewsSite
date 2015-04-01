@@ -1,0 +1,239 @@
+﻿body {
+    word-wrap: break-word;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    background-color: #dbdbdb;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 3px solid #808080;
+    border-right: 3px solid #808080;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/*.department-header {
+    text-decoration: underline;
+    -moz-text-decoration-color: red; 
+    text-decoration-color: red;
+}*/
+
+.department-header strong {
+    text-decoration: underline;
+    -moz-text-decoration-color: red; /* Code for Firefox */
+    text-decoration-color: red;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+.article-details-container {
+    padding: 10px;
+}
+
+.carousel-text {
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.item {
+    background: #333;
+    text-align: center;
+    min-height: 337px !important;
+}
+
+.sixteen-ninths {
+    width: 600px;
+    height: 337px;
+}
+
+.carousel-image {
+    width: 100%;
+    max-height: 337px;
+    margin: auto;
+}
+
+.weather-town-for-town-btn {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+#logo-container {
+    font-family: 'Lucida Calligraphy';
+    margin-bottom: -20px;
+}
+
+    #logo-container h1 {
+        font-size: 6em;
+        display: inline-block;
+    }
+
+    #logo-container span {
+        font-size: 0.75em;
+    }
+
+    #logo-container #logo-anchor:hover #the-truth-container {
+        text-decoration: underline;
+    }
+
+    #logo-container #logo-anchor:hover #today-container {
+        color: #ED3C3C;
+        font-weight: bold;
+    }
+
+    #logo-container #the-truth-container {
+        margin-top: -10px;
+        padding-left: 20px;
+        font-size: 1em;
+        color: #092028;
+    }
+
+    #logo-container #today-container {
+        margin-top: -45px;
+        padding-left: 20px;
+        font-size: 4em;
+        color: #850404;
+        font-family: Calibri;
+    }
+
+#spinner {
+    position: absolute;
+    margin: auto 300px;
+    font-size: 7em;
+    font-weight: bolder;
+    color: red;
+}
+
+.ad-container {
+    margin: 25px;
+}
+
+.img_modal {
+    height: 200px;
+}
+
+.image-in-container {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-container-modal {
+    height: 450px;
+}
+
+.album-thumbnail-container {
+    height: 150px;
+    margin-bottom: 5px;
+}
+
+#myModalLabel {
+    color: #ffffff;
+}
+
+.photos-h4 {
+    padding-left: 25px;
+}
+
+ul.footer-nav {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+}
+
+    .footer h3, .footer li, .footer a {
+        color: #fff;
+    }
+
+        .footer li:hover, .footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+p.copyright {
+    width: 100%;
+    padding: 10px;
+}
+
+    p.copyright a {
+        color: white;
+    }
+
+        p.copyright a:hover {
+            color: white;
+        }
+
+.article-content-container {
+    padding-right: 20px;
+}
+
+.copyright {
+    margin: 0 auto;
+}
+
+.wheater-partial {
+    margin-top: 5px;
+}
+
+.weather-container #city-name-container,
+.weather-container #degrees-container,
+.weather-container #weather-img-container,
+.weather-container #clouds-container {
+    padding-right: 10px;
+    font-size: 1.50em;
+}
+
+#weather-select-town {
+    padding: 3px;
+    margin-right: 5px;
+}
+
+.news-link-medium-list {
+    padding: 5px;
+}
+
+    .news-link-medium-list p,
+    .news-link-small-list p {
+        color: #092028;
+        font-weight: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .news-link-medium-list:hover,
+    .news-link-small-list:hover {
+        background-color: #b9e0ed;
+    }
+
+        .news-link-medium-list:hover p,
+        .news-link-small-list:hover p {
+            text-decoration: underline;
+        }
+
+.medium-list-holder {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.right-bordered {
+    border-right: 2px solid #808080;
+}
+
+.small-list-holder {
+    padding-left: 10px;
+    padding-right: 10px;
+}

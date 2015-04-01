@@ -1,0 +1,46 @@
+﻿@using PagedList.Mvc
+@using NewsSite.Web.ViewModels.Articles
+
+@model PagedList.IPagedList<ArticleBigListViewModel>
+
+<div class="two-columns">
+    <div class="main-column">
+        <div>
+            @foreach (var article in Model)
+            {
+                <div class="my-thumbnail l-clearfix">
+                    <a href="@Url.Action("Details", "Article", new { id = article.Id })">
+                        <div class="my-thumbnail-image-container">
+                            <img src="@Url.Action("Photo", "Photo", new { photoId = article.PhotoId })" alt="No avatar was found" class="img-responsive" style="width: 100%; max-height: 250px; margin:auto" />
+                        </div>
+                        <div class="my-thumbnail-text">
+                            <strong>@article.Title </strong>
+                            <p>@Html.Raw(article.Content)</p>
+                            <p>
+                                <span class="my-comment-icon"></span>
+                                <span>@article.CommentsCount</span>
+                                <span class="my-eye-icon"></span>
+                                <span>@article.ReadersCount</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div>
+            @(Html.PagedListPager(Model, page => Url.Action("ArticlesByCategoryPage", "Article", new { categoryId = (long)this.ViewBag.CategoryId, page })))
+        </div>
+    </div>
+
+    <div class="side-column side-category">
+        <div>
+            @Html.Action("SquareAd", "Advertisment", new { Area = string.Empty })
+        </div>
+        <div>
+            <h6 class="featured-lists-header">
+                <strong>Подобни новини</strong>
+            </h6>
+            @Html.Action("ListOfTheSameCategory", new { categoryId = this.ViewBag.CategoryId, newsCount = 5 })
+        </div>
+    </div>
+</div>

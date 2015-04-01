@@ -1,0 +1,36 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<NewsSite.Web.Areas.ViewModels.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Категории новини";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("Добави", "Create", null, new { @class = "btn btn-primary" })
+
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th class="text-right">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => category.Name)</td>
+                <td>
+                    @Html.ActionLink("Изтрий", "Delete", new { id = category.Id }, new { @class = "btn btn-default pull-right" })
+                    @Html.ActionLink("Редактирай", "Edit", new { id = category.Id }, new { @class = "btn btn-default pull-right" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>

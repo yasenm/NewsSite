@@ -1,0 +1,61 @@
+﻿@using NewsSite.Web.Areas.Administration.InputModels.Advertisments
+
+@model AdvertismentInputModel
+
+@using (Html.BeginForm("Create", "Advertisment", new { area = "Administration" }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Link, new { @for = "link-create" })
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Link, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Link, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Firm, new { @for = "link-create" })
+        </div>
+        <div class="col-md-9">
+            @Html.TextBoxFor(m => m.Firm, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Firm, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.CoverPhoto, new { @for = "CoverPhoto" })
+        </div>
+        <div class="col-md-9">
+            <input type="file" name="CoverPhoto" id="CoverPhoto" class="btn btn-default" />
+            @Html.ValidationMessageFor(m => m.CoverPhoto, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.IsActive, new { @for = "IsActive" })
+        </div>
+        <div class="col-md-9">
+            @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsActive, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.Type, new { @for = "Type" })
+        </div>
+        <div class="col-md-9">
+            @Html.Action("GetAdvetrismentTypesDropDown", "Advertisment", new { Area = "Administration" })
+        </div>
+    </div>
+    <div>
+        <button type="submit" value="Запази" class="btn btn-sm btn-info">Запази</button>
+        <a href="@Url.Action("Index", "Advertisment", null)" class="btn btn-sm btn-danger">Откажи</a>
+    </div>
+}

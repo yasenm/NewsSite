@@ -1,0 +1,23 @@
+﻿@using NewsSite.Web.ViewModels.Articles;
+
+@model ICollection<ArticleListViewModel>
+
+@foreach (var article in Model)
+{
+    <div class="my-thumbnail l-clearfix">
+        <a href="@Url.Action("Details", "Article", new { id = article.Id })">
+            <div class="my-thumbnail-image-container">
+                <img src="@Url.Action("Photo", "Photo", new { photoId = article.PhotoId })" alt="No avatar was found" />
+            </div>
+            <div class="my-thumbnail-text">
+                <p>@article.Title </p>
+                <p class="my-thumbnail-sub-text">
+                    <span class="my-comment-icon"></span>
+                    <span>@article.CommentsCount</span>
+                    <span class="my-eye-icon"></span>
+                    <span>@article.ReadersCount</span>
+                </p>
+            </div>
+        </a>
+    </div>
+}

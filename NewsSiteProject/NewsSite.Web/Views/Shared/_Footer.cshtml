@@ -1,0 +1,57 @@
+﻿<footer class="l-footer">
+    <div class="l-container">
+        
+        <div class="l-full-width l-clearfix">
+            <div class="l-footer-column a-third">
+                <h3 class="l-column-header">Следвайте ни</h3>
+                <div class="find-us">
+                    <a target="_blank" href="~/"><img src="~/Content/img/fb.png" alt="Следвайте ни във facebook"></a>
+                    <a target="_blank" href="~/"><img src="~/Content/img/yoututbe.png" alt="Следвайте ни във youtube"></a>
+                </div>
+
+                <a href="#"><img alt="" src="">Информатор</a>
+                <br />
+                <br />
+                <!-- NACHALO NA TYXO.BG BROYACH -->
+                <script type="text/javascript">
+                    d = document; d.write('<a href="http://www.tyxo.bg/?166723" target="_blank" title="Tyxo.bg counter"><img width="88" height="31" border="0" alt="Tyxo.bg counter" src="' + location.protocol + '//cnt.tyxo.bg/166723?rnd=' + Math.round(Math.random() * 2147483647));
+                    d.write('&sp=' + screen.width + 'x' + screen.height + '&r=' + escape(d.referrer) + '"></a>');
+                </script>
+                @*<a href="http://www.tyxo.bg/?166723" target="_blank" title="Tyxo.bg counter">
+                    <img src="http://cnt.tyxo.bg/166723" width="100" height="50" border="0" alt="Tyxo.bg counter" />
+                </a>*@
+                <!-- KRAI NA TYXO.BG BROYACH -->
+            </div>
+
+            <div class="l-footer-column a-third">
+                <h3 class="l-column-header">Полезни връзки</h3>
+                <ul>
+                    <li><a href="@Url.Action("AboutUs", "Home", new { Area = string.Empty })">За нас</a></li>
+                    <li>
+                        <a href="@Url.Action("Contacts", "Home", new { Area = string.Empty })">Контакти</a>
+                    </li>
+                    <li><a href="@Url.Action("Advertisement", "Home", new { Area = string.Empty })">Реклама</a></li>
+                </ul>
+            </div>
+
+            <div class="l-footer-column a-third">
+                <h3 class="l-column-header">Контакти</h3>
+                <p><strong>Враца,</strong><br> e-mail: <a href="mailto:">informatortoday@gmail.com</a></p>
+                <p><strong>Реклама:</strong><br> e-mail: <a href="mailto:">informatortoday@gmail.com</a><br><br></p>
+            </div>
+        </div>
+
+        <div class="l-text-center">
+            <p class="copyright">
+                Един сайт направен от
+                <a href="@GlobalConstants.YasenGithub" target="_blank">yasenm</a>
+                и
+                <a href="@GlobalConstants.PlamenGithub" target="_blank">plamenyovchev</a>
+                <br />
+                Дизайн на 
+                <a href="@GlobalConstants.StefanGithub" target="_blank">StefanDimov</a>
+                <br /> &copy; Всички права запазени
+            </p>
+        </div>
+    </div>
+</footer>

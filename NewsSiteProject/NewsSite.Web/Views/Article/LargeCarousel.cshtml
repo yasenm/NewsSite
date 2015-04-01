@@ -1,0 +1,39 @@
+﻿@using NewsSite.Web.ViewModels.Articles;
+
+@model ICollection<ArticleListViewModel>
+
+<div id="carousel-example-generic" class="slide l-slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        @for (int i = 0; i < this.Model.Count; i++)
+        {
+            <li data-target="#carousel-example-generic" data-slide-to="@i" @if (i == 0) { <text> class="active" </text>   }></li>
+        }
+    </ol>
+    <div class="carousel-inner">
+        @{
+            int first = 0;
+            foreach (var article in this.Model)
+            {
+                <div class="item text-center @if (first == 0) { <text>active</text> }">
+                    <img class="img-responsive carousel-image" src="@Url.Action("Photo", "Photo", new { photoId = article.PhotoId })" alt="@article.Title">
+                    <div class="carousel-caption">
+                        <a href="@Url.Action("Details", "Article", new { id = article.Id })">
+                            <h3>
+                                <strong class="carousel-text">@article.Title</strong>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                                             first++;
+            }
+        }
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
