@@ -69,7 +69,9 @@
 }
 
 .top-menu .sub-menu a {
-    margin-left: 3%;
+    display: block;
+    width: 100%;
+    padding-left: 3%;
     font-family: serif;
     color: #666;
 }
@@ -226,7 +228,7 @@
         font-size: 0.8em;
     }
 
-    .top-menu .sub-menu .sub-menu-item {
+    .top-menu .sub-menu .sub-menu-item a {
         padding: 0.8em 1em;
         text-align: center;
         box-sizing: border-box;
