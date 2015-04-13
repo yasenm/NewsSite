@@ -140,7 +140,7 @@
                 .All()
                 .Project()
                 .To<ArticleViewModel>()
-                .OrderBy(a => a.CreatedOn);
+                .OrderByDescending(a => a.CreatedOn);
 
             return articles;
         }
