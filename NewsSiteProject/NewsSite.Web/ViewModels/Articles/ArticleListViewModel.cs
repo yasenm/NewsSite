@@ -1,6 +1,7 @@
 ﻿namespace NewsSite.Web.ViewModels.Articles
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -24,7 +25,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleListViewModel>()
-                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(a => a.Comments.Count));
+                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(a => a.Comments.Where(c => c.IsDeleted == false).Count()));
         }
     }
 }

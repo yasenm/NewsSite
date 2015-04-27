@@ -59,7 +59,7 @@
             var article = this.Data.Articles.GetById(articleId);
 
             var collection = this.Data.Comments.All()
-                .Where(c => c.ArticleId == articleId)
+                .Where(c => c.ArticleId == articleId && c.IsDeleted == false)
                 .OrderByDescending(c => c.CreatedOn)
                 .AsQueryable()
                 .Project()

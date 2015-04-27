@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web;
 
     using AutoMapper;
@@ -36,7 +37,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleDetailsViewModel>()
-                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(a => a.Comments.Count));
+                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(a => a.Comments.Where(c => c.IsDeleted == false).Count()));
         }
     }
 }
