@@ -164,7 +164,7 @@
 
             var collection = this.Data.Articles
                 .All()
-                .Where(a => a.CreatedOn > daysPassed)
+                .Where(a => a.CreatedOn > daysPassed && a.Comments.Where(c => c.IsDeleted == false).Count() > 0)
                 .OrderByDescending(a => a.Comments.Count())
                 .Take(newsCount)
                 .Project()
